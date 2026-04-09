@@ -1,0 +1,14 @@
+import pyttsx3
+
+def Baum(count):
+    # Initialize the engine once outside the loop for better performance
+    engine = pyttsx3.init()
+    
+    while count > 0:
+        engine.say("Yassin")
+        count -= 1
+        # It's usually better to call runAndWait() inside the loop 
+        # if you want it to speak as it counts down
+        engine.runAndWait()
+
+Baum(500)
