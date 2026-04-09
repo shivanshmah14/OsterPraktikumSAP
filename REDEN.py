@@ -2,7 +2,7 @@ import streamlit as st
 from gtts import gTTS
 import os
 
-st.title("Yassin's Speaker App")
+st.title("Yosuf Speaker App")
 
 # Let the user choose the count
 count = st.number_input("How many times?", min_value=1, max_value=50, value=5)
