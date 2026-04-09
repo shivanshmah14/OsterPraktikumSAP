@@ -7,8 +7,6 @@ def Baum(count):
     while count > 0:
         engine.say("Yassin")
         count -= 1
-        # It's usually better to call runAndWait() inside the loop 
-        # if you want it to speak as it counts down
         engine.runAndWait()
 
 Baum(500)
