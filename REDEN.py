@@ -9,7 +9,7 @@ count = st.number_input("How many times?", min_value=1, max_value=50, value=5)
 
 if st.button("Start Speaking"):
     # We create one long text string with the name repeated
-    full_text = " ".join(["Yassin"] * int(count))
+    full_text = " ".join([" allah hu akbar"] * int(count))
     
     with st.spinner("Preparing audio..."):
         # Generate the audio
