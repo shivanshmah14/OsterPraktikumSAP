@@ -1,31 +1,21 @@
 import streamlit as st
-import pyttsx3
-import time
+from gtts import gTTS
+import os
 
-st.title("The Yassin Generator")
+st.title("Yassin's Speaker App")
 
-# User inputs for customization
-count_input = st.number_input("How many times should I say it?", min_value=1, max_value=1000, value=10)
-name_to_say = st.text_input("Name to repeat:", value="Yassin")
+# Let the user choose the count
+count = st.number_input("How many times?", min_value=1, max_value=50, value=5)
 
 if st.button("Start Speaking"):
-    # Initialize the engine
-    engine = pyttsx3.init()
+    # We create one long text string with the name repeated
+    full_text = " ".join(["Yassin"] * int(count))
     
-    # UI feedback
-    status_text = st.empty()
-    progress_bar = st.progress(0)
-    
-    for i in range(count_input):
-        # Update UI
-        current_count = i + 1
-        percent_complete = current_count / count_input
+    with st.spinner("Preparing audio..."):
+        # Generate the audio
+        tts = gTTS(text=full_text, lang='en')
+        tts.save("speech.mp3")
         
-        status_text.text(f"Speaking {name_to_say}... ({current_count}/{count_input})")
-        progress_bar.progress(percent_complete)
-        
-        # Speech execution
-        engine.say(name_to_say)
-        engine.runAndWait()
-        
-    st.success("Done!")
+    # Show the audio player and play it automatically
+    st.audio("speech.mp3", format="audio/mp3", autoplay=True)
+    st.success(f"Finished saying Yassin {count} times!")
